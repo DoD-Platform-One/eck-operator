@@ -17,6 +17,7 @@ configs:
       username: "<repo 1 user>"
       password: <repo 1 token>
 ```
+Install the local chart
 
 ```
 # Clone the repo
