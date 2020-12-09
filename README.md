@@ -15,6 +15,8 @@ cd eck-operator/chart
 
 helm dependency update
 
+cd ..
+
 helm install eck-operator chart 
 ```
 
