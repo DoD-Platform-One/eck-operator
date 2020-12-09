@@ -6,7 +6,7 @@ Originally sourced from [upstream](https://github.com/elastic/cloud-on-k8s/tree/
 
 ## Contents
 
-[Developer Guide](docs/developer-guide.yaml)
+[Developer Guide](docs/developer-guide.md)
 
 ## Deployment
 ```
