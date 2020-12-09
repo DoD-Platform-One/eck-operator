@@ -7,7 +7,10 @@ Originally sourced from [upstream](https://github.com/elastic/cloud-on-k8s/tree/
 ## Deployment
 ```
 git clone https://repo1.dsop.io/platform-one/big-bang/apps/core/eck-operator.git
-cd eck-operator
+cd eck-operator/chart
+
+helm dependency update
+
 helm install eck-operator chart 
 ```
 
