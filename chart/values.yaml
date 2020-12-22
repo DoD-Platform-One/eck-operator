@@ -25,7 +25,7 @@ image:
   pullPolicy: IfNotPresent
 
 # imagePullSecrets defines the secrets to use when pulling the operator container image.
-imagePullSecrets: []
+imagePullSecrets: ["name" : "private-registry"]
 
 # resources define the container resource limits for the operator.
 resources:
