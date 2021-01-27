@@ -26,7 +26,7 @@ image:
 
 # imagePullSecrets defines the secrets to use when pulling the operator container image.
 imagePullSecrets:
-  - name: private-registry
+  - name: private-registry-mil
 
 # resources define the container resource limits for the operator.
 resources:
