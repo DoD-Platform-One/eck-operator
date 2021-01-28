@@ -24,7 +24,8 @@ image:
   # pullPolicy is the container image pull policy.
   pullPolicy: IfNotPresent
 
-imagePullSecrets: [ private-registry-mil ]
+imagePullSecrets:
+- name: private-registry-mil
 
 # resources define the container resource limits for the operator.
 resources:
