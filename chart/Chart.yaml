@@ -32,6 +32,6 @@ maintainers:
 
 dependencies:
   - name: eck-operator-crds
-    version: 1.4.0
+    version: 1.4.0-bb.4
     condition: installCRDs
     repository: "file://eck-operator-crds"
