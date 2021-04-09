@@ -11,7 +11,7 @@ home: https://github.com/elastic/cloud-on-k8s
 
 type: application
 
-version: 1.4.0
+version: 1.4.0-bb.4
 
 appVersion: 1.4.0
 
@@ -32,6 +32,6 @@ maintainers:
 
 dependencies:
   - name: eck-operator-crds
-    version: 1.4.0-bb.4
+    version: 1.4.0
     condition: installCRDs
     repository: "file://eck-operator-crds"
