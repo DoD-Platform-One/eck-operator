@@ -2,6 +2,8 @@ apiVersion: v2
 
 name: eck-operator
 
+icon: https://helm.elastic.co/icons/eck.png
+
 description: |-
   A Helm chart for deploying the Elastic Cloud on Kubernetes (ECK) operator: the official Kubernetes operator for orchestrating Elasticsearch, Kibana, APM Server, Enterprise Search, and Beats.
 
@@ -9,9 +11,9 @@ home: https://github.com/elastic/cloud-on-k8s
 
 type: application
 
-version: 1.3.0-bb.4
+version: 1.4.0-bb.0
 
-appVersion: 1.3.0
+appVersion: 1.4.0
 
 kubeVersion: ">=1.12.0-0"
 
@@ -30,6 +32,6 @@ maintainers:
 
 dependencies:
   - name: eck-operator-crds
-    version: 1.3.0
+    version: 1.4.0
     condition: installCRDs
     repository: "file://eck-operator-crds"

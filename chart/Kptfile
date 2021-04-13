@@ -1,11 +1,11 @@
 apiVersion: kpt.dev/v1alpha1
 kind: Kptfile
 metadata:
-  name: eck-operator
+  name: chart
 upstream:
   type: git
   git:
-    commit: 6db1914b6cc293d844166e30b6ba4b6f7c75b4fe
+    commit: 4aff0b983844b145430ce766386f499e398fbde0
     repo: https://github.com/elastic/cloud-on-k8s
-    directory: /deploy/eck-operator
-    ref: 1.3.0
+    directory: deploy/eck-operator
+    ref: 1.4.0
