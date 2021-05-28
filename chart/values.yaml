@@ -126,7 +126,7 @@ config:
   logVerbosity: "0"
 
   # metricsPort defines the port to expose operator metrics. Set to 0 to disable metrics reporting.
-  metricsPort: "0"
+  metricsPort: "4321"
 
   # containerRegistry to use for pulling Elasticsearch and other application container images.
   containerRegistry: docker.elastic.co
@@ -169,3 +169,10 @@ license:
   trial: false # Toggle to enable the trial license for development use
   keyJSON: "" # Set this to your license JSON for production use
 
+# BigBang specific Network Policy Configuration
+networkPolicies:
+  enabled: false
+
+# Toggle BigBang Monitoring Integration
+monitoring:
+  enabled: false
