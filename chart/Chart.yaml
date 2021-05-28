@@ -11,7 +11,7 @@ home: https://github.com/elastic/cloud-on-k8s
 
 type: application
 
-version: 1.4.0-bb.1
+version: 1.4.0-bb.2
 
 appVersion: 1.4.0
 
