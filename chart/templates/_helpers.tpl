@@ -36,7 +36,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 Common labels
 */}}
 {{- define "eck-operator.labels" -}}
-{{ include "eck-operator.selectorLabels" . }}
+{{- include "eck-operator.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -147,6 +147,18 @@ Define admissionReviewVersions based on Kubernetes version
 {{- $kubeVersionSupported := semverCompare ">=1.16.0-0" $kubeVersion -}}
 {{- if $kubeVersionSupported  }}
 admissionReviewVersions: [v1beta1]
+{{- end }}
+{{- end }}
+
+
+{{/*
+Define webhook match policy based on Kubernetes version
+*/}}
+{{- define "eck-operator.webhookMatchPolicy" -}}
+{{- $kubeVersion := (include "eck-operator.effectiveKubeVersion" .) -}}
+{{- $kubeVersionSupported := semverCompare ">=1.16.0-0" $kubeVersion -}}
+{{- if $kubeVersionSupported  }}
+matchPolicy: Exact
 {{- end }}
 {{- end }}
 
@@ -283,6 +295,20 @@ RBAC permissions
   - agents
   - agents/status
   - agents/finalizers # needed for ownerReferences with blockOwnerDeletion on OCP
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - maps.k8s.elastic.co
+  resources:
+  - elasticmapsservers
+  - elasticmapsservers/status
+  - elasticmapsservers/finalizers # needed for ownerReferences with blockOwnerDeletion on OCP
   verbs:
   - get
   - list
