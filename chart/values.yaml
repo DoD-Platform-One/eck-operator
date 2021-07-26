@@ -218,3 +218,6 @@ networkPolicies:
 # Toggle BigBang Monitoring Integration
 monitoring:
   enabled: false
+
+# Openshift toggle, conditionally modifies networkpolicy for DNS
+openshift: false
