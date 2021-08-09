@@ -29,13 +29,13 @@ image:
 imagePullSecrets: []
 
 # resources define the container resource limits for the operator.
-resources:
+resources: # Limits equal to request to provide QOS per BB Charter
   limits:
-    cpu: 1
-    memory: 512Mi
+    cpu: 200m # Values pulled from PB IL2 cluster
+    memory: 256Mi
   requests:
-    cpu: 100m
-    memory: 150Mi
+    cpu: 200m
+    memory: 256Mi
 
 # podAnnotations define the annotations that should be added to the operator pod.
 podAnnotations: {}
