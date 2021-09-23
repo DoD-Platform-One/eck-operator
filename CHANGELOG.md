@@ -2,6 +2,11 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0-bb.3]
+### Added
+- NetworkPolicy template to allow istiod communication when istio-injected.
+- istio enabled toggle value to control conditional for above NetworkPolicy
+
 ## [1.6.0-bb.2]
 ### Changed
 - Set resource limits equal to requests in order to resolve OPA container-ratio violations
