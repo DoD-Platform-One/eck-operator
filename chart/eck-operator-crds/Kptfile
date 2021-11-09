@@ -1,6 +1,0 @@
-apiVersion: kpt.dev/v1alpha1
-kind: Kptfile
-metadata:
-  name: eck-operator-crds
-packageMetadata:
-  shortDescription: sample description
