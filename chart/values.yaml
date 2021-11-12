@@ -234,7 +234,7 @@ istio:
 
 # Force replace CRD upgrade job needed for 1.7.x upgrade
 upgradeCrds:
-  enabled: true
+  enabled: false
   image:
     repository: registry1.dso.mil/ironbank/big-bang/base
     tag: 8.4
