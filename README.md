@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 1.8.0-bb.0](https://img.shields.io/badge/Version-1.8.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.8.0](https://img.shields.io/badge/AppVersion-1.8.0-informational?style=flat-square)
+![Version: 1.9.1-bb.0](https://img.shields.io/badge/Version-1.9.1--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
 
 A Helm chart for deploying the Elastic Cloud on Kubernetes (ECK) operator: the official Kubernetes operator for orchestrating Elasticsearch, Kibana, APM Server, Enterprise Search, and Beats.
 
@@ -41,7 +41,7 @@ helm install eck-operator chart/
 | installCRDs | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| image.tag | string | `"1.7.1"` |  |
+| image.tag | string | `"1.9.1"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | imagePullSecrets | list | `[]` |  |
 | resources.limits.cpu | string | `"200m"` |  |
@@ -107,7 +107,7 @@ helm install eck-operator chart/
 | monitoring.enabled | bool | `false` |  |
 | openshift | bool | `false` |  |
 | istio.enabled | bool | `false` |  |
-| upgradeCrds.enabled | bool | `true` |  |
+| upgradeCrds.enabled | bool | `false` |  |
 | upgradeCrds.image.repository | string | `"registry1.dso.mil/ironbank/big-bang/base"` |  |
 | upgradeCrds.image.tag | float | `8.4` |  |
 
