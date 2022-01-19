@@ -1,4 +1,4 @@
-{{- if (and .Values.istio.enabled .Values.istio.mtls) -}}
+{{- if and .Values.istio.enabled .Values.istio.mtls }}
 apiVersion: "security.istio.io/v1beta1"
 kind: PeerAuthentication
 metadata:
