@@ -4,7 +4,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [1.9.1-bb.2]
 ### Added
-- Added PeerAuthentication yaml to templates that verifies both Istio and mtls are enabled.  This enables Peer Authentication mtls for the namespace
+- Added PeerAuthentication yaml to templates that verifies both Istio and mtls are enabled.  This enables Peer Authentication/mTLS for istio communication within the namespace
 
 ## [1.9.1-bb.1]
 ### Added
