@@ -107,6 +107,7 @@ helm install eck-operator chart/
 | monitoring.enabled | bool | `false` |  |
 | openshift | bool | `false` |  |
 | istio.enabled | bool | `false` |  |
+| istio.mtls | bool | `true` |  |
 | upgradeCrds.enabled | bool | `false` |  |
 | upgradeCrds.image.repository | string | `"registry1.dso.mil/ironbank/big-bang/base"` |  |
 | upgradeCrds.image.tag | float | `8.4` |  |
