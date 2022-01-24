@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [1.9.1-bb.1]
 ### Added
-- Added PeerAuthentication yaml to templates that verifies both Istio and mtls are enabled.  This enables Peer Authentication/mTLS for istio communication within the namespace
+- Added OSCAL component for ECK Operator with NIST 800-53 controls
 
 ## [1.9.1-bb.0]
 ### Changed
