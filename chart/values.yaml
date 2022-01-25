@@ -231,6 +231,7 @@ openshift: false
 # Istio toggle, conditionally allow istio specific policies and components
 istio:
   enabled: false
+  mtls: true
 
 # Force replace CRD upgrade job needed for 1.7.x upgrade
 upgradeCrds:
