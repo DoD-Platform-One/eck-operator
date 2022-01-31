@@ -22,6 +22,15 @@
       "depNameTemplate": "registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator",
       "datasourceTemplate": "docker",
       "registryUrlTemplate": "https://registry1.dso.mil"
+    },
+    {
+      "fileMatch": ["^chart/Chart\\.yaml$"],
+      "matchStrings": [
+        "- ECK Operator:\\s+(?<currentValue>.+)"
+      ],
+      "depNameTemplate": "ironbank/elastic/eck-operator/eck-operator",
+      "datasourceTemplate": "docker",
+      "registryUrlTemplate": "https://registry1.dso.mil"
     }
   ]
 }
