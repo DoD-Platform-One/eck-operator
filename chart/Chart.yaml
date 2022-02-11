@@ -37,4 +37,4 @@ dependencies:
     repository: "file://eck-operator-crds"
 annotations:
   bigbang.dev/applicationVersions: |
-    - ECK Operator: 1.9.1
+    - ECK Operator: 2.0.0
