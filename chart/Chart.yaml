@@ -34,7 +34,7 @@ dependencies:
   - name: eck-operator-crds
     version: 2.0.0
     condition: installCRDs
-    repository: "file://eck-operator-crds"
+    repository: "file://charts/eck-operator-crds"
 annotations:
   bigbang.dev/applicationVersions: |
     - ECK Operator: 2.0.0
