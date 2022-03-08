@@ -11,9 +11,9 @@ home: https://github.com/elastic/cloud-on-k8s
 
 type: application
 
-version: 1.9.1-bb.4
+version: 2.0.0-bb.0
 
-appVersion: 1.9.1
+appVersion: 2.0.0
 
 kubeVersion: ">=1.12.0-0"
 
@@ -32,9 +32,9 @@ maintainers:
 
 dependencies:
   - name: eck-operator-crds
-    version: 1.9.1
+    version: 2.0.0
     condition: installCRDs
-    repository: "file://eck-operator-crds"
+    repository: "file://charts/eck-operator-crds"
 annotations:
   bigbang.dev/applicationVersions: |
-    - ECK Operator: 1.9.1
+    - ECK Operator: 2.0.0
