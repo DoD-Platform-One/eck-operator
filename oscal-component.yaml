@@ -3,7 +3,7 @@ component-definition:
   metadata: 
     title: ECK Operator Component
     last-modified: '2021-10-19T12:00:00Z'
-    version: 20211019
+    version: "20211019"
     oscal-version: 1.0.0
     parties:
       # Should be consistent across all of the packages, but where is ground truth?
@@ -22,12 +22,14 @@ component-definition:
     purpose: Managing Elasticsearch and Kibana instances
     responsible-roles:
     - role-id: provider
-      party-uuid: 72134592-08C2-4A77-ABAD-C880F109367A # matches parties entry for p1
+      party-uuids:
+      - 72134592-08C2-4A77-ABAD-C880F109367A # matches parties entry for p1
     control-implementations:
     - uuid: 5108E5FC-C45F-477B-A542-9C5611A92485
       source: https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json
       description:
-        Controls implemented by ECK Operator for inheritance by applications      
+        Controls implemented by ECK Operator for inheritance by applications   
+      implemented-requirements: []   
   back-matter: 
     resources:
     - uuid: 785AAEC1-5AF3-4C95-A63C-7D6CC95E92F5
