@@ -2,7 +2,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.8.0
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -337,8 +337,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -505,12 +504,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -532,7 +535,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -844,18 +847,12 @@ spec:
     storage: true
     subresources:
       status: {}
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.8.0
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -995,8 +992,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -1163,12 +1159,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -1190,7 +1190,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -1474,6 +1474,15 @@ spec:
                 description: KibanaAssociationStatus is the status of any auto-linking
                   to Kibana.
                 type: string
+              observedGeneration:
+                description: ObservedGeneration represents the .metadata.generation
+                  that the status is based upon. It corresponds to the metadata generation,
+                  which is updated on mutation by the API Server. If the generation
+                  observed in status diverges from the generation in metadata, the
+                  APM Server controller has not yet processed the changes contained
+                  in the APM Server specification.
+                format: int64
+                type: integer
               secretTokenSecret:
                 description: SecretTokenSecretName is the name of the Secret that
                   contains the secret token
@@ -1600,8 +1609,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -1768,12 +1776,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -1795,7 +1807,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -2051,18 +2063,12 @@ spec:
         type: object
     served: false
     storage: false
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.8.0
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -2429,6 +2435,15 @@ spec:
               kibanaAssociationStatus:
                 description: AssociationStatus is the status of an association resource.
                 type: string
+              observedGeneration:
+                description: ObservedGeneration represents the .metadata.generation
+                  that the status is based upon. It corresponds to the metadata generation,
+                  which is updated on mutation by the API Server. If the generation
+                  observed in status diverges from the generation in metadata, the
+                  Beats controller has not yet processed the changes contained in
+                  the Beats specification.
+                format: int64
+                type: integer
               version:
                 description: 'Version of the stack resource currently running. During
                   version upgrades, multiple versions may run in parallel: this value
@@ -2440,18 +2455,12 @@ spec:
     storage: true
     subresources:
       status: {}
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.8.0
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -2604,8 +2613,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -2772,12 +2780,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -2799,7 +2811,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -3009,6 +3021,15 @@ spec:
               health:
                 description: Health of the deployment.
                 type: string
+              observedGeneration:
+                description: ObservedGeneration is the most recent generation observed
+                  for this Elastic Maps Server. It corresponds to the metadata generation,
+                  which is updated on mutation by the API Server. If the generation
+                  observed in status diverges from the generation in metadata, the
+                  Elastic Maps controller has not yet processed the changes contained
+                  in the Elastic Maps specification.
+                format: int64
+                type: integer
               selector:
                 description: Selector is the label selector used to find all pods.
                 type: string
@@ -3027,18 +3048,12 @@ spec:
         specReplicasPath: .spec.count
         statusReplicasPath: .status.count
       status: {}
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.8.0
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -3169,8 +3184,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -3337,12 +3351,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -3364,7 +3382,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -3714,18 +3732,18 @@ spec:
                                 type: string
                             type: object
                           spec:
-                            description: 'Spec defines the desired characteristics
+                            description: 'spec defines the desired characteristics
                               of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims'
                             properties:
                               accessModes:
-                                description: 'AccessModes contains the desired access
+                                description: 'accessModes contains the desired access
                                   modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1'
                                 items:
                                   type: string
                                 type: array
                               dataSource:
-                                description: 'This field can be used to specify either:
-                                  * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
+                                description: 'dataSource field can be used to specify
+                                  either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
                                   * An existing PVC (PersistentVolumeClaim) If the
                                   provisioner or an external controller can support
                                   the specified data source, it will create a new
@@ -3754,27 +3772,28 @@ spec:
                                 - name
                                 type: object
                               dataSourceRef:
-                                description: 'Specifies the object from which to populate
-                                  the volume with data, if a non-empty volume is desired.
-                                  This may be any local object from a non-empty API
-                                  group (non core object) or a PersistentVolumeClaim
-                                  object. When this field is specified, volume binding
-                                  will only succeed if the type of the specified object
-                                  matches some installed volume populator or dynamic
-                                  provisioner. This field will replace the functionality
-                                  of the DataSource field and as such if both fields
-                                  are non-empty, they must have the same value. For
-                                  backwards compatibility, both fields (DataSource
-                                  and DataSourceRef) will be set to the same value
-                                  automatically if one of them is empty and the other
-                                  is non-empty. There are two important differences
-                                  between DataSource and DataSourceRef: * While DataSource
-                                  only allows two specific types of objects, DataSourceRef
-                                  allows any non-core object, as well as PersistentVolumeClaim
+                                description: 'dataSourceRef specifies the object from
+                                  which to populate the volume with data, if a non-empty
+                                  volume is desired. This may be any local object
+                                  from a non-empty API group (non core object) or
+                                  a PersistentVolumeClaim object. When this field
+                                  is specified, volume binding will only succeed if
+                                  the type of the specified object matches some installed
+                                  volume populator or dynamic provisioner. This field
+                                  will replace the functionality of the DataSource
+                                  field and as such if both fields are non-empty,
+                                  they must have the same value. For backwards compatibility,
+                                  both fields (DataSource and DataSourceRef) will
+                                  be set to the same value automatically if one of
+                                  them is empty and the other is non-empty. There
+                                  are two important differences between DataSource
+                                  and DataSourceRef: * While DataSource only allows
+                                  two specific types of objects, DataSourceRef allows
+                                  any non-core object, as well as PersistentVolumeClaim
                                   objects. * While DataSource ignores disallowed values
                                   (dropping them), DataSourceRef preserves all values,
                                   and generates an error if a disallowed value is
-                                  specified. (Alpha) Using this field requires the
+                                  specified. (Beta) Using this field requires the
                                   AnyVolumeDataSource feature gate to be enabled.'
                                 properties:
                                   apiGroup:
@@ -3797,7 +3816,7 @@ spec:
                                 - name
                                 type: object
                               resources:
-                                description: 'Resources represents the minimum resources
+                                description: 'resources represents the minimum resources
                                   the volume should have. If RecoverVolumeExpansionFailure
                                   feature is enabled users are allowed to specify
                                   resource requirements that are lower than previous
@@ -3830,8 +3849,8 @@ spec:
                                     type: object
                                 type: object
                               selector:
-                                description: A label query over volumes to consider
-                                  for binding.
+                                description: selector is a label query over volumes
+                                  to consider for binding.
                                 properties:
                                   matchExpressions:
                                     description: matchExpressions is a list of label
@@ -3878,8 +3897,8 @@ spec:
                                     type: object
                                 type: object
                               storageClassName:
-                                description: 'Name of the StorageClass required by
-                                  the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1'
+                                description: 'storageClassName is the name of the
+                                  StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1'
                                 type: string
                               volumeMode:
                                 description: volumeMode defines what type of volume
@@ -3887,17 +3906,17 @@ spec:
                                   implied when not included in claim spec.
                                 type: string
                               volumeName:
-                                description: VolumeName is the binding reference to
+                                description: volumeName is the binding reference to
                                   the PersistentVolume backing this claim.
                                 type: string
                             type: object
                           status:
-                            description: 'Status represents the current information/status
+                            description: 'status represents the current information/status
                               of a persistent volume claim. Read-only. More info:
                               https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims'
                             properties:
                               accessModes:
-                                description: 'AccessModes contains the actual access
+                                description: 'accessModes contains the actual access
                                   modes the volume backing the PVC has. More info:
                                   https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1'
                                 items:
@@ -3910,18 +3929,19 @@ spec:
                                   - type: string
                                   pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
                                   x-kubernetes-int-or-string: true
-                                description: The storage resource within AllocatedResources
-                                  tracks the capacity allocated to a PVC. It may be
-                                  larger than the actual capacity when a volume expansion
-                                  operation is requested. For storage quota, the larger
-                                  value from allocatedResources and PVC.spec.resources
-                                  is used. If allocatedResources is not set, PVC.spec.resources
-                                  alone is used for quota calculation. If a volume
-                                  expansion capacity request is lowered, allocatedResources
-                                  is only lowered if there are no expansion operations
-                                  in progress and if the actual volume capacity is
-                                  equal or lower than the requested capacity. This
-                                  is an alpha field and requires enabling RecoverVolumeExpansionFailure
+                                description: allocatedResources is the storage resource
+                                  within AllocatedResources tracks the capacity allocated
+                                  to a PVC. It may be larger than the actual capacity
+                                  when a volume expansion operation is requested.
+                                  For storage quota, the larger value from allocatedResources
+                                  and PVC.spec.resources is used. If allocatedResources
+                                  is not set, PVC.spec.resources alone is used for
+                                  quota calculation. If a volume expansion capacity
+                                  request is lowered, allocatedResources is only lowered
+                                  if there are no expansion operations in progress
+                                  and if the actual volume capacity is equal or lower
+                                  than the requested capacity. This is an alpha field
+                                  and requires enabling RecoverVolumeExpansionFailure
                                   feature.
                                 type: object
                               capacity:
@@ -3931,36 +3951,40 @@ spec:
                                   - type: string
                                   pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
                                   x-kubernetes-int-or-string: true
-                                description: Represents the actual resources of the
-                                  underlying volume.
+                                description: capacity represents the actual resources
+                                  of the underlying volume.
                                 type: object
                               conditions:
-                                description: Current Condition of persistent volume
-                                  claim. If underlying persistent volume is being
-                                  resized then the Condition will be set to 'ResizeStarted'.
+                                description: conditions is the current Condition of
+                                  persistent volume claim. If underlying persistent
+                                  volume is being resized then the Condition will
+                                  be set to 'ResizeStarted'.
                                 items:
                                   description: PersistentVolumeClaimCondition contails
                                     details about state of pvc
                                   properties:
                                     lastProbeTime:
-                                      description: Last time we probed the condition.
+                                      description: lastProbeTime is the time we probed
+                                        the condition.
                                       format: date-time
                                       type: string
                                     lastTransitionTime:
-                                      description: Last time the condition transitioned
-                                        from one status to another.
+                                      description: lastTransitionTime is the time
+                                        the condition transitioned from one status
+                                        to another.
                                       format: date-time
                                       type: string
                                     message:
-                                      description: Human-readable message indicating
-                                        details about last transition.
+                                      description: message is the human-readable message
+                                        indicating details about last transition.
                                       type: string
                                     reason:
-                                      description: Unique, this should be a short,
-                                        machine understandable string that gives the
-                                        reason for condition's last transition. If
-                                        it reports "ResizeStarted" that means the
-                                        underlying persistent volume is being resized.
+                                      description: reason is a unique, this should
+                                        be a short, machine understandable string
+                                        that gives the reason for condition's last
+                                        transition. If it reports "ResizeStarted"
+                                        that means the underlying persistent volume
+                                        is being resized.
                                       type: string
                                     status:
                                       type: string
@@ -3974,11 +3998,11 @@ spec:
                                   type: object
                                 type: array
                               phase:
-                                description: Phase represents the current phase of
+                                description: phase represents the current phase of
                                   PersistentVolumeClaim.
                                 type: string
                               resizeStatus:
-                                description: ResizeStatus stores status of resize
+                                description: resizeStatus stores status of resize
                                   operation. ResizeStatus is not set by default but
                                   when expansion is complete resizeStatus is set to
                                   empty string by resize controller or kubelet. This
@@ -4045,10 +4069,9 @@ spec:
                         x-kubernetes-int-or-string: true
                       selector:
                         description: Label query over pods whose evictions are managed
-                          by the disruption budget. A null selector selects no pods.
-                          An empty selector ({}) also selects no pods, which differs
-                          from standard behavior of selecting all pods. In policy/v1,
-                          an empty selector will select all pods in the namespace.
+                          by the disruption budget. A null selector will match no
+                          pods, while an empty ({}) selector will select all pods
+                          within the namespace.
                         properties:
                           matchExpressions:
                             description: matchExpressions is a list of label selector
@@ -4215,8 +4238,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -4383,12 +4405,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -4410,7 +4436,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -4902,8 +4928,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -5070,12 +5095,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -5097,7 +5126,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -5342,18 +5371,18 @@ spec:
                                 type: string
                             type: object
                           spec:
-                            description: 'Spec defines the desired characteristics
+                            description: 'spec defines the desired characteristics
                               of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims'
                             properties:
                               accessModes:
-                                description: 'AccessModes contains the desired access
+                                description: 'accessModes contains the desired access
                                   modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1'
                                 items:
                                   type: string
                                 type: array
                               dataSource:
-                                description: 'This field can be used to specify either:
-                                  * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
+                                description: 'dataSource field can be used to specify
+                                  either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
                                   * An existing PVC (PersistentVolumeClaim) If the
                                   provisioner or an external controller can support
                                   the specified data source, it will create a new
@@ -5382,27 +5411,28 @@ spec:
                                 - name
                                 type: object
                               dataSourceRef:
-                                description: 'Specifies the object from which to populate
-                                  the volume with data, if a non-empty volume is desired.
-                                  This may be any local object from a non-empty API
-                                  group (non core object) or a PersistentVolumeClaim
-                                  object. When this field is specified, volume binding
-                                  will only succeed if the type of the specified object
-                                  matches some installed volume populator or dynamic
-                                  provisioner. This field will replace the functionality
-                                  of the DataSource field and as such if both fields
-                                  are non-empty, they must have the same value. For
-                                  backwards compatibility, both fields (DataSource
-                                  and DataSourceRef) will be set to the same value
-                                  automatically if one of them is empty and the other
-                                  is non-empty. There are two important differences
-                                  between DataSource and DataSourceRef: * While DataSource
-                                  only allows two specific types of objects, DataSourceRef
-                                  allows any non-core object, as well as PersistentVolumeClaim
+                                description: 'dataSourceRef specifies the object from
+                                  which to populate the volume with data, if a non-empty
+                                  volume is desired. This may be any local object
+                                  from a non-empty API group (non core object) or
+                                  a PersistentVolumeClaim object. When this field
+                                  is specified, volume binding will only succeed if
+                                  the type of the specified object matches some installed
+                                  volume populator or dynamic provisioner. This field
+                                  will replace the functionality of the DataSource
+                                  field and as such if both fields are non-empty,
+                                  they must have the same value. For backwards compatibility,
+                                  both fields (DataSource and DataSourceRef) will
+                                  be set to the same value automatically if one of
+                                  them is empty and the other is non-empty. There
+                                  are two important differences between DataSource
+                                  and DataSourceRef: * While DataSource only allows
+                                  two specific types of objects, DataSourceRef allows
+                                  any non-core object, as well as PersistentVolumeClaim
                                   objects. * While DataSource ignores disallowed values
                                   (dropping them), DataSourceRef preserves all values,
                                   and generates an error if a disallowed value is
-                                  specified. (Alpha) Using this field requires the
+                                  specified. (Beta) Using this field requires the
                                   AnyVolumeDataSource feature gate to be enabled.'
                                 properties:
                                   apiGroup:
@@ -5425,7 +5455,7 @@ spec:
                                 - name
                                 type: object
                               resources:
-                                description: 'Resources represents the minimum resources
+                                description: 'resources represents the minimum resources
                                   the volume should have. If RecoverVolumeExpansionFailure
                                   feature is enabled users are allowed to specify
                                   resource requirements that are lower than previous
@@ -5458,8 +5488,8 @@ spec:
                                     type: object
                                 type: object
                               selector:
-                                description: A label query over volumes to consider
-                                  for binding.
+                                description: selector is a label query over volumes
+                                  to consider for binding.
                                 properties:
                                   matchExpressions:
                                     description: matchExpressions is a list of label
@@ -5506,8 +5536,8 @@ spec:
                                     type: object
                                 type: object
                               storageClassName:
-                                description: 'Name of the StorageClass required by
-                                  the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1'
+                                description: 'storageClassName is the name of the
+                                  StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1'
                                 type: string
                               volumeMode:
                                 description: volumeMode defines what type of volume
@@ -5515,17 +5545,17 @@ spec:
                                   implied when not included in claim spec.
                                 type: string
                               volumeName:
-                                description: VolumeName is the binding reference to
+                                description: volumeName is the binding reference to
                                   the PersistentVolume backing this claim.
                                 type: string
                             type: object
                           status:
-                            description: 'Status represents the current information/status
+                            description: 'status represents the current information/status
                               of a persistent volume claim. Read-only. More info:
                               https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims'
                             properties:
                               accessModes:
-                                description: 'AccessModes contains the actual access
+                                description: 'accessModes contains the actual access
                                   modes the volume backing the PVC has. More info:
                                   https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1'
                                 items:
@@ -5538,18 +5568,19 @@ spec:
                                   - type: string
                                   pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
                                   x-kubernetes-int-or-string: true
-                                description: The storage resource within AllocatedResources
-                                  tracks the capacity allocated to a PVC. It may be
-                                  larger than the actual capacity when a volume expansion
-                                  operation is requested. For storage quota, the larger
-                                  value from allocatedResources and PVC.spec.resources
-                                  is used. If allocatedResources is not set, PVC.spec.resources
-                                  alone is used for quota calculation. If a volume
-                                  expansion capacity request is lowered, allocatedResources
-                                  is only lowered if there are no expansion operations
-                                  in progress and if the actual volume capacity is
-                                  equal or lower than the requested capacity. This
-                                  is an alpha field and requires enabling RecoverVolumeExpansionFailure
+                                description: allocatedResources is the storage resource
+                                  within AllocatedResources tracks the capacity allocated
+                                  to a PVC. It may be larger than the actual capacity
+                                  when a volume expansion operation is requested.
+                                  For storage quota, the larger value from allocatedResources
+                                  and PVC.spec.resources is used. If allocatedResources
+                                  is not set, PVC.spec.resources alone is used for
+                                  quota calculation. If a volume expansion capacity
+                                  request is lowered, allocatedResources is only lowered
+                                  if there are no expansion operations in progress
+                                  and if the actual volume capacity is equal or lower
+                                  than the requested capacity. This is an alpha field
+                                  and requires enabling RecoverVolumeExpansionFailure
                                   feature.
                                 type: object
                               capacity:
@@ -5559,36 +5590,40 @@ spec:
                                   - type: string
                                   pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
                                   x-kubernetes-int-or-string: true
-                                description: Represents the actual resources of the
-                                  underlying volume.
+                                description: capacity represents the actual resources
+                                  of the underlying volume.
                                 type: object
                               conditions:
-                                description: Current Condition of persistent volume
-                                  claim. If underlying persistent volume is being
-                                  resized then the Condition will be set to 'ResizeStarted'.
+                                description: conditions is the current Condition of
+                                  persistent volume claim. If underlying persistent
+                                  volume is being resized then the Condition will
+                                  be set to 'ResizeStarted'.
                                 items:
                                   description: PersistentVolumeClaimCondition contails
                                     details about state of pvc
                                   properties:
                                     lastProbeTime:
-                                      description: Last time we probed the condition.
+                                      description: lastProbeTime is the time we probed
+                                        the condition.
                                       format: date-time
                                       type: string
                                     lastTransitionTime:
-                                      description: Last time the condition transitioned
-                                        from one status to another.
+                                      description: lastTransitionTime is the time
+                                        the condition transitioned from one status
+                                        to another.
                                       format: date-time
                                       type: string
                                     message:
-                                      description: Human-readable message indicating
-                                        details about last transition.
+                                      description: message is the human-readable message
+                                        indicating details about last transition.
                                       type: string
                                     reason:
-                                      description: Unique, this should be a short,
-                                        machine understandable string that gives the
-                                        reason for condition's last transition. If
-                                        it reports "ResizeStarted" that means the
-                                        underlying persistent volume is being resized.
+                                      description: reason is a unique, this should
+                                        be a short, machine understandable string
+                                        that gives the reason for condition's last
+                                        transition. If it reports "ResizeStarted"
+                                        that means the underlying persistent volume
+                                        is being resized.
                                       type: string
                                     status:
                                       type: string
@@ -5602,11 +5637,11 @@ spec:
                                   type: object
                                 type: array
                               phase:
-                                description: Phase represents the current phase of
+                                description: phase represents the current phase of
                                   PersistentVolumeClaim.
                                 type: string
                               resizeStatus:
-                                description: ResizeStatus stores status of resize
+                                description: resizeStatus stores status of resize
                                   operation. ResizeStatus is not set by default but
                                   when expansion is complete resizeStatus is set to
                                   empty string by resize controller or kubelet. This
@@ -5819,18 +5854,12 @@ spec:
         type: object
     served: false
     storage: false
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.8.0
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -5982,8 +6011,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -6150,12 +6178,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -6177,7 +6209,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -6386,6 +6418,15 @@ spec:
               health:
                 description: Health of the deployment.
                 type: string
+              observedGeneration:
+                description: ObservedGeneration represents the .metadata.generation
+                  that the status is based upon. It corresponds to the metadata generation,
+                  which is updated on mutation by the API Server. If the generation
+                  observed in status diverges from the generation in metadata, the
+                  Enterprise Search controller has not yet processed the changes contained
+                  in the Enterprise Search specification.
+                format: int64
+                type: integer
               selector:
                 description: Selector is the label selector used to find all pods.
                 type: string
@@ -6538,8 +6579,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -6706,12 +6746,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -6733,7 +6777,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -6960,18 +7004,12 @@ spec:
     storage: false
     subresources:
       status: {}
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.8.0
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -7143,8 +7181,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -7311,12 +7348,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -7338,7 +7379,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -7828,8 +7869,7 @@ spec:
                               be respected, regardless of this field. This field may
                               only be set for services with type LoadBalancer and
                               will be cleared if the type is changed to any other
-                              type. This field is beta-level and is only honored by
-                              servers that enable the ServiceLBNodePortControl feature.
+                              type.
                             type: boolean
                           clusterIP:
                             description: 'clusterIP is the IP address of the service
@@ -7996,12 +8036,16 @@ spec:
                               a non 'LoadBalancer' type.
                             type: string
                           loadBalancerIP:
-                            description: 'Only applies to Service Type: LoadBalancer
-                              LoadBalancer will get created with the IP specified
-                              in this field. This feature depends on whether the underlying
-                              cloud-provider supports specifying the loadBalancerIP
-                              when a load balancer is created. This field will be
-                              ignored if the cloud-provider does not support the feature.'
+                            description: 'Only applies to Service Type: LoadBalancer.
+                              This feature depends on whether the underlying cloud-provider
+                              supports specifying the loadBalancerIP when a load balancer
+                              is created. This field will be ignored if the cloud-provider
+                              does not support the feature. Deprecated: This field
+                              was under-specified and its meaning varies across implementations,
+                              and it cannot support dual-stack. As of Kubernetes v1.24,
+                              users are encouraged to use implementation-specific
+                              annotations when available. This field may be removed
+                              in a future API version.'
                             type: string
                           loadBalancerSourceRanges:
                             description: 'If specified and supported by the platform,
@@ -8023,7 +8067,7 @@ spec:
                                   description: The application protocol for this port.
                                     This field follows standard Kubernetes label syntax.
                                     Un-prefixed names are reserved for IANA standard
-                                    service names (as per RFC-6335 and http://www.iana.org/assignments/service-names).
+                                    service names (as per RFC-6335 and https://www.iana.org/assignments/service-names).
                                     Non-standard protocols should use prefixed names
                                     such as mycompany.com/my-custom-protocol.
                                   type: string
@@ -8268,9 +8312,3 @@ spec:
         type: object
     served: false
     storage: false
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

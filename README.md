@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.2.0-bb.2](https://img.shields.io/badge/Version-2.2.0--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
+![Version: 2.3.0-bb.0](https://img.shields.io/badge/Version-2.3.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.3.0](https://img.shields.io/badge/AppVersion-2.3.0-informational?style=flat-square)
 
 A Helm chart for deploying the Elastic Cloud on Kubernetes (ECK) operator: the official Kubernetes operator for orchestrating Elasticsearch, Kibana, APM Server, Enterprise Search, and Beats.
 
@@ -41,8 +41,9 @@ helm install eck-operator chart/
 | installCRDs | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| image.tag | string | `"2.2.0"` |  |
+| image.tag | string | `"2.3.0"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
+| priorityClassName | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | resources.limits.cpu | string | `"200m"` |  |
 | resources.limits.memory | string | `"256Mi"` |  |
@@ -92,6 +93,7 @@ helm install eck-operator chart/
 | config.kubeClientTimeout | string | `"60s"` |  |
 | config.elasticsearchClientTimeout | string | `"180s"` |  |
 | config.validateStorageClass | bool | `true` |  |
+| config.enableLeaderElection | bool | `true` |  |
 | podMonitor.enabled | bool | `false` |  |
 | podMonitor.labels | object | `{}` |  |
 | podMonitor.annotations | object | `{}` |  |
