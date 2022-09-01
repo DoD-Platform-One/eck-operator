@@ -6,6 +6,7 @@
   "dependencyDashboardTitle": "Renovate: Upgrade ECK Operator Package Dependencies",
   "draftPR": true,
   "labels": ["eckoperator","renovate"],
+  "commitMessagePrefix": "SKIP UPDATE CHECK",
   "packageRules": [
     {
       "matchDatasources": ["docker"],
