@@ -1,6 +1,6 @@
 dependencies:
 - name: eck-operator-crds
   repository: file://charts/eck-operator-crds
-  version: 2.2.0
-digest: sha256:2b5d8e237180820b106ef158138811afac2ade87e5b2a0618d67c742205e39a5
-generated: "2022-06-20T11:21:12.008619-05:00"
+  version: 2.4.0
+digest: sha256:2bb2bbe0306f30c7b35c597ce049d934a83d451349ed7d1f88a9c8bd869ed8cf
+generated: "2022-09-08T12:19:16.955542-05:00"
