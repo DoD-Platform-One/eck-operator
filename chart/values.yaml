@@ -20,7 +20,7 @@ replicaCount: 1
 image:
   # repository is the container image prefixed by the registry name.
   repository: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator
-  tag: 2.4.0
+  tag: 2.5.0
 
   # pullPolicy is the container image pull policy.
   pullPolicy: IfNotPresent
@@ -185,6 +185,9 @@ config:
   # enableLeaderElection specifies whether leader election should be enabled
   enableLeaderElection: true
 
+  # Interval between observations of Elasticsearch health, non-positive values disable asynchronous observation.
+  elasticsearchObservationInterval: 10s
+
 # Prometheus PodMonitor configuration
 # Reference: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#podmonitor
 podMonitor:
@@ -225,7 +228,7 @@ global:
   # Usually we do want that to happen (e.g. all-in-one.yaml) but, sometimes we don't (e.g. E2E tests). 
   createOperatorNamespace: true
   # kubeVersion is the effective Kubernetes version we target when generating the all-in-one.yaml.
-  kubeVersion: 1.16.0
+  kubeVersion: 1.21.0
 
 # Enterprise license
 license:
