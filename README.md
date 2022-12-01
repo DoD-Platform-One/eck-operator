@@ -17,7 +17,7 @@ A Helm chart for deploying the Elastic Cloud on Kubernetes (ECK) operator: the o
 * Kubernetes config installed in `~/.kube/config`
 * Helm installed
 
-Kubernetes: `>=1.12.0-0`
+Kubernetes: `>=1.21.0-0`
 
 Install Helm
 
@@ -94,6 +94,7 @@ helm install eck-operator chart/
 | config.elasticsearchClientTimeout | string | `"180s"` |  |
 | config.validateStorageClass | bool | `true` |  |
 | config.enableLeaderElection | bool | `true` |  |
+| config.elasticsearchObservationInterval | string | `"10s"` |  |
 | podMonitor.enabled | bool | `false` |  |
 | podMonitor.labels | object | `{}` |  |
 | podMonitor.annotations | object | `{}` |  |
@@ -103,7 +104,7 @@ helm install eck-operator chart/
 | podMonitor.podMetricsEndpointConfig | object | `{}` |  |
 | global.manifestGen | bool | `false` |  |
 | global.createOperatorNamespace | bool | `true` |  |
-| global.kubeVersion | string | `"1.16.0"` |  |
+| global.kubeVersion | string | `"1.21.0"` |  |
 | license.trial | bool | `false` |  |
 | license.keyJSON | string | `""` |  |
 | networkPolicies.enabled | bool | `false` |  |
