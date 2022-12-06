@@ -38,3 +38,7 @@ dependencies:
 annotations:
   bigbang.dev/applicationVersions: |
     - ECK Operator: 2.5.0
+  helm.sh/images: |
+    - name: eck-operator
+      image: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator:2.5.0
+
