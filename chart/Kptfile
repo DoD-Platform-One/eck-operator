@@ -5,7 +5,7 @@ metadata:
 upstream:
   type: git
   git:
-    commit: 642f9ecd3e2efe1a008c1fb974b727b294875162
+    commit: 62f2e278e4184d1559510776dae108fe5248f766
     repo: https://github.com/elastic/cloud-on-k8s
     directory: /deploy/eck-operator
-    ref: 2.5.0
+    ref: 2.6.1
