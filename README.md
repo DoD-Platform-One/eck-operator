@@ -1,8 +1,8 @@
 # eck-operator
 
-![Version: 2.7.0-bb.1](https://img.shields.io/badge/Version-2.7.0--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 2.8.0-bb.0](https://img.shields.io/badge/Version-2.8.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
 
-A Helm chart for deploying the Elastic Cloud on Kubernetes (ECK) operator: the official Kubernetes operator for orchestrating Elasticsearch, Kibana, APM Server, Enterprise Search, and Beats.
+Elastic Cloud on Kubernetes (ECK) operator
 
 ## Upstream References
 * <https://github.com/elastic/cloud-on-k8s>
@@ -59,6 +59,8 @@ helm install eck-operator chart/
 | nodeSelector | object | `{}` |  |
 | tolerations | list | `[]` |  |
 | affinity | object | `{}` |  |
+| podDisruptionBudget.enabled | bool | `false` |  |
+| podDisruptionBudget.minAvailable | int | `1` |  |
 | env | list | `[]` |  |
 | volumeMounts | list | `[]` |  |
 | volumes | list | `[]` |  |
@@ -78,6 +80,8 @@ helm install eck-operator chart/
 | webhook.manageCerts | bool | `true` |  |
 | webhook.namespaceSelector | object | `{}` |  |
 | webhook.objectSelector | object | `{}` |  |
+| webhook.port | int | `9443` |  |
+| hostNetwork | bool | `false` |  |
 | softMultiTenancy.enabled | bool | `false` |  |
 | kubeAPIServerIP | string | `nil` |  |
 | telemetry.disabled | bool | `false` |  |
