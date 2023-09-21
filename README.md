@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.8.0-bb.0](https://img.shields.io/badge/Version-2.8.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
+![Version: 2.9.0-bb.0](https://img.shields.io/badge/Version-2.9.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -41,7 +41,7 @@ helm install eck-operator chart/
 | installCRDs | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| image.tag | string | `"2.7.0"` |  |
+| image.tag | string | `"2.9.0"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | priorityClassName | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
