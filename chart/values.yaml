@@ -49,6 +49,8 @@ podLabels: {}
 # podSecurityContext defines the pod security context for the operator pod.
 podSecurityContext:
   runAsNonRoot: true
+  fsGroup: 1001
+  supplementalGroups: [1001]
 
 # securityContext defines the security context of the operator container.
 securityContext:
@@ -58,6 +60,8 @@ securityContext:
       - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
+  runAsUser: 1001
+  runAsGroup: 1001
 
 # nodeSelector defines the node selector for the operator pod.
 nodeSelector: {}
