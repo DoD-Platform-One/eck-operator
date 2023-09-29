@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.9.0-bb.0](https://img.shields.io/badge/Version-2.9.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
+![Version: 2.9.0-bb.1](https://img.shields.io/badge/Version-2.9.0--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -52,10 +52,16 @@ helm install eck-operator chart/
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | podSecurityContext.runAsNonRoot | bool | `true` |  |
+| podSecurityContext.runAsUser | int | `1001` |  |
+| podSecurityContext.runAsGroup | int | `1001` |  |
+| podSecurityContext.fsGroup | int | `1001` |  |
+| podSecurityContext.supplementalGroups | int | `1001` |  |
 | securityContext.allowPrivilegeEscalation | bool | `false` |  |
 | securityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
+| securityContext.runAsUser | int | `1001` |  |
+| securityContext.runAsGroup | int | `1001` |  |
 | nodeSelector | object | `{}` |  |
 | tolerations | list | `[]` |  |
 | affinity | object | `{}` |  |
