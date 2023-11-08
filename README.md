@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.9.0-bb.2](https://img.shields.io/badge/Version-2.9.0--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
+![Version: 2.9.0-bb.3](https://img.shields.io/badge/Version-2.9.0--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -126,7 +126,7 @@ helm install eck-operator chart/
 | istio.mtls.mode | string | `"STRICT"` |  |
 | upgradeCrds.enabled | bool | `false` |  |
 | upgradeCrds.image.repository | string | `"registry1.dso.mil/ironbank/big-bang/base"` |  |
-| upgradeCrds.image.tag | string | `"2.0.0"` |  |
+| upgradeCrds.image.tag | string | `"2.1.0"` |  |
 
 ## Contributing
 

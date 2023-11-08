@@ -289,4 +289,4 @@ upgradeCrds:
   enabled: false
   image:
     repository: registry1.dso.mil/ironbank/big-bang/base
-    tag: 2.0.0
+    tag: 2.1.0
