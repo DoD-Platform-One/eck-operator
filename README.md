@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.9.0-bb.3](https://img.shields.io/badge/Version-2.9.0--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
+![Version: 2.10.0-bb.0](https://img.shields.io/badge/Version-2.10.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.10.0](https://img.shields.io/badge/AppVersion-2.10.0-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -41,7 +41,7 @@ helm install eck-operator chart/
 | installCRDs | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| image.tag | string | `"2.9.0"` |  |
+| image.tag | string | `"2.10.0"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | priorityClassName | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
@@ -85,6 +85,7 @@ helm install eck-operator chart/
 | webhook.namespaceSelector | object | `{}` |  |
 | webhook.objectSelector | object | `{}` |  |
 | webhook.port | int | `9443` |  |
+| webhook.secret | string | `""` |  |
 | hostNetwork | bool | `false` |  |
 | softMultiTenancy.enabled | bool | `false` |  |
 | kubeAPIServerIP | string | `nil` |  |
@@ -96,16 +97,20 @@ helm install eck-operator chart/
 | config.maxConcurrentReconciles | string | `"3"` |  |
 | config.caValidity | string | `"8760h"` |  |
 | config.caRotateBefore | string | `"24h"` |  |
+| config.caDir | string | `""` |  |
 | config.certificatesValidity | string | `"8760h"` |  |
 | config.certificatesRotateBefore | string | `"24h"` |  |
+| config.disableConfigWatch | bool | `false` |  |
 | config.exposedNodeLabels[0] | string | `"topology.kubernetes.io/.*"` |  |
 | config.exposedNodeLabels[1] | string | `"failure-domain.beta.kubernetes.io/.*"` |  |
+| config.ipFamily | string | `""` |  |
 | config.setDefaultSecurityContext | string | `"auto-detect"` |  |
 | config.kubeClientTimeout | string | `"60s"` |  |
 | config.elasticsearchClientTimeout | string | `"180s"` |  |
 | config.validateStorageClass | bool | `true` |  |
 | config.enableLeaderElection | bool | `true` |  |
 | config.elasticsearchObservationInterval | string | `"10s"` |  |
+| config.ubiOnly | bool | `false` |  |
 | podMonitor.enabled | bool | `false` |  |
 | podMonitor.labels | object | `{}` |  |
 | podMonitor.annotations | object | `{}` |  |
