@@ -2,7 +2,7 @@
 
 ECK-Operator is a modified/customized version of an upstream chart. The below details the steps required to update to a new version of the eck-operator package.
 
-1. Check the [upstream release hilights](https://www.elastic.co/guide/en/cloud-on-k8s/current/release-highlights.html) for any major changes or potential conflicts.
+1. Check the [upstream release highlights](https://www.elastic.co/guide/en/cloud-on-k8s/current/release-highlights.html) for any major changes or potential conflicts.
 
 1. Navigate to the [upstream chart repo and folder](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-operator) and find the tag that corresponds with the new chart version for this image update. Typically, in this package, the application version and helm chart version are the same. 
 
