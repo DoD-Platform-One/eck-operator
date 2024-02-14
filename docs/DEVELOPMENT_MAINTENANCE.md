@@ -11,7 +11,7 @@ ECK-Operator is a modified/customized version of an upstream chart. The below de
 3. From the root of the repo run `kpt pkg update chart@<tag> --strategy alpha-git-patch`, where `<tag>` is found in step 1, checkout the chart/Kptfile ref for tag naming
     - Run a KPT package update
     ```
-    kpt pkg update chart@tempo-<tag> --strategy alpha-git-patch
+    kpt pkg update chart@<tag> --strategy alpha-git-patch
     ```
 
 4. Modify the version in Chart.yaml and append -bb.0 to the chart version from upstream. See Update main chart section of this document.
