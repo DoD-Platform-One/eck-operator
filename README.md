@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.11.1-bb.0](https://img.shields.io/badge/Version-2.11.1--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.11.1](https://img.shields.io/badge/AppVersion-2.11.1-informational?style=flat-square)
+![Version: 2.11.1-bb.1](https://img.shields.io/badge/Version-2.11.1--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.11.1](https://img.shields.io/badge/AppVersion-2.11.1-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -130,6 +130,8 @@ helm install eck-operator chart/
 | istio.enabled | bool | `false` |  |
 | istio.hardened.enabled | bool | `false` |  |
 | istio.hardened.customAuthorizationPolicies | list | `[]` |  |
+| istio.hardened.outboundTrafficPolicyMode | string | `"REGISTRY_ONLY"` |  |
+| istio.hardened.customServiceEntries | list | `[]` |  |
 | istio.hardened.tempo.enabled | bool | `false` |  |
 | istio.hardened.tempo.namespaces[0] | string | `"tempo"` |  |
 | istio.hardened.tempo.principals[0] | string | `"cluster.local/ns/tempo/sa/tempo-tempo"` |  |
