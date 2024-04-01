@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.11.1-bb.1](https://img.shields.io/badge/Version-2.11.1--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.11.1](https://img.shields.io/badge/AppVersion-2.11.1-informational?style=flat-square)
+![Version: 2.12.1-bb.0](https://img.shields.io/badge/Version-2.12.1--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.12.1](https://img.shields.io/badge/AppVersion-2.12.1-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -41,7 +41,7 @@ helm install eck-operator chart/
 | installCRDs | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| image.tag | string | `"2.11.1"` |  |
+| image.tag | string | `"2.12.1"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | priorityClassName | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
@@ -92,7 +92,13 @@ helm install eck-operator chart/
 | telemetry.disabled | bool | `false` |  |
 | telemetry.distributionChannel | string | `"helm"` |  |
 | config.logVerbosity | string | `"0"` |  |
-| config.metricsPort | string | `"4321"` |  |
+| config.metricsPort | string | `"0"` |  |
+| config.metrics.port | string | `"4321"` |  |
+| config.metrics.secureMode.enabled | bool | `false` |  |
+| config.metrics.secureMode.tls.certificateSecret | string | `""` |  |
+| config.metrics.secureMode.tls.caSecret | string | `""` |  |
+| config.metrics.secureMode.tls.caMountDirectory | string | `"/etc/prometheus/secrets/"` |  |
+| config.metrics.secureMode.tls.insecureSkipVerify | bool | `true` |  |
 | config.containerRegistry | string | `"docker.elastic.co"` |  |
 | config.maxConcurrentReconciles | string | `"3"` |  |
 | config.caValidity | string | `"8760h"` |  |
@@ -118,6 +124,7 @@ helm install eck-operator chart/
 | podMonitor.scrapeTimeout | string | `"30s"` |  |
 | podMonitor.podTargetLabels | list | `[]` |  |
 | podMonitor.podMetricsEndpointConfig | object | `{}` |  |
+| serviceMonitor | object | `{}` |  |
 | global.manifestGen | bool | `false` |  |
 | global.createOperatorNamespace | bool | `true` |  |
 | global.kubeVersion | string | `"1.21.0"` |  |
