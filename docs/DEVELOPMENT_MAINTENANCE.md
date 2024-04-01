@@ -78,7 +78,7 @@ securityContext:
   runAsGroup: 1001
 ```
 
-* `config.metricsPort` set to 4321
+* `config.metrics.port` set to 4321
 ```yaml
 config:
   # logVerbosity defines the logging level. Valid values are as follows:
@@ -88,8 +88,12 @@ config:
   #  number greater than 0: Errors, warnings, information, and debug details.
   logVerbosity: "0"
 
-  # metricsPort defines the port to expose operator metrics. Set to 0 to disable metrics reporting.
-  metricsPort: "4321"
+  # (Deprecated: use metrics.port: will be removed in v2.14.0) metricsPort defines the port to expose operator metrics. Set to 0 to disable metrics reporting.
+  metricsPort: 0
+
+  metrics:
+    # port defines the port to expose operator metrics. Set to 0 to disable metrics reporting.
+    port: "4321"
 ```
 
 * Added `license` values
