@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.12.1-bb.0](https://img.shields.io/badge/Version-2.12.1--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.12.1](https://img.shields.io/badge/AppVersion-2.12.1-informational?style=flat-square)
+![Version: 2.12.1-bb.1](https://img.shields.io/badge/Version-2.12.1--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.12.1](https://img.shields.io/badge/AppVersion-2.12.1-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -132,6 +132,7 @@ helm install eck-operator chart/
 | license.keyJSON | string | `""` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
+| networkPolicies.additionalPolicies | list | `[]` |  |
 | monitoring.enabled | bool | `false` |  |
 | openshift | bool | `false` |  |
 | istio.enabled | bool | `false` |  |
