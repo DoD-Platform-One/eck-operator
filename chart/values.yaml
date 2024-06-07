@@ -20,7 +20,7 @@ replicaCount: 1
 image:
   # repository is the container image prefixed by the registry name.
   repository: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator
-  tag: 2.12.1
+  tag: 2.13.0
 
   # pullPolicy is the container image pull policy.
   pullPolicy: IfNotPresent
@@ -39,6 +39,12 @@ resources: # Limits equal to request to provide QOS per BB Charter
   requests:
     cpu: 200m
     memory: 256Mi
+
+# statefulsetAnnotations define the annotations that should be added to the operator StatefulSet.
+statefulsetAnnotations: {}
+
+# statefulsetLabels define additional labels that should be added to the operator StatefulSet.
+statefulsetLabels: {}
 
 # podAnnotations define the annotations that should be added to the operator pod.
 podAnnotations: {}
@@ -91,9 +97,14 @@ volumes: []
 # createClusterScopedResources determines whether cluster-scoped resources (ClusterRoles, ClusterRoleBindings) should be created.
 createClusterScopedResources: true
 
+# Automount API credentials for the Service Account into the pod.
+automountServiceAccountToken: true
+
 serviceAccount:
   # create specifies whether a service account should be created for the operator.
   create: true
+  # Specifies whether a service account should automount API credentials.
+  automountServiceAccountToken: true
   # annotations to add to the service account
   annotations: {}
   # name of the service account to use. If not set and create is true, a name is generated using the fullname template.
@@ -133,7 +144,7 @@ webhook:
   # port is the port that the validating webhook binds to.
   port: 9443
   # secret specifies the Kubernetes secret to be mounted into the path designated by the certsDir value to be used for webhook certificates.
-  secret: ""
+  certsSecret: ""
 
 # hostNetwork allows a Pod to use the Node network namespace.
 # This is required to allow for communication with the kube API when using some alternate CNIs in conjunction with webhook enabled.
@@ -192,6 +203,8 @@ config:
       #       serviceMonitorNamespaceSelector: {}
       #       serviceMonitorSelectorNilUsesHelmValues: false
       enabled: false
+      # additional volume mounts for the kube-rbac-proxy container.
+      volumeMounts: []
       tls:
         # certificateSecret is the name of the tls secret containing the custom TLS certificate and key for the secure metrics endpoint.
         #

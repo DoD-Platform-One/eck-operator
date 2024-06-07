@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.12.1-bb.1](https://img.shields.io/badge/Version-2.12.1--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.12.1](https://img.shields.io/badge/AppVersion-2.12.1-informational?style=flat-square)
+![Version: 2.13.0-bb.0](https://img.shields.io/badge/Version-2.13.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.13.0](https://img.shields.io/badge/AppVersion-2.13.0-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -41,7 +41,7 @@ helm install eck-operator chart/
 | installCRDs | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| image.tag | string | `"2.12.1"` |  |
+| image.tag | string | `"2.13.0"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | priorityClassName | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
@@ -49,6 +49,8 @@ helm install eck-operator chart/
 | resources.limits.memory | string | `"256Mi"` |  |
 | resources.requests.cpu | string | `"200m"` |  |
 | resources.requests.memory | string | `"256Mi"` |  |
+| statefulsetAnnotations | object | `{}` |  |
+| statefulsetLabels | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | podSecurityContext.runAsNonRoot | bool | `true` |  |
@@ -69,7 +71,9 @@ helm install eck-operator chart/
 | volumeMounts | list | `[]` |  |
 | volumes | list | `[]` |  |
 | createClusterScopedResources | bool | `true` |  |
+| automountServiceAccountToken | bool | `true` |  |
 | serviceAccount.create | bool | `true` |  |
+| serviceAccount.automountServiceAccountToken | bool | `true` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.name | string | `""` |  |
 | tracing.enabled | bool | `false` |  |
@@ -85,7 +89,7 @@ helm install eck-operator chart/
 | webhook.namespaceSelector | object | `{}` |  |
 | webhook.objectSelector | object | `{}` |  |
 | webhook.port | int | `9443` |  |
-| webhook.secret | string | `""` |  |
+| webhook.certsSecret | string | `""` |  |
 | hostNetwork | bool | `false` |  |
 | softMultiTenancy.enabled | bool | `false` |  |
 | kubeAPIServerIP | string | `nil` |  |
@@ -95,6 +99,7 @@ helm install eck-operator chart/
 | config.metricsPort | string | `"0"` |  |
 | config.metrics.port | string | `"4321"` |  |
 | config.metrics.secureMode.enabled | bool | `false` |  |
+| config.metrics.secureMode.volumeMounts | list | `[]` |  |
 | config.metrics.secureMode.tls.certificateSecret | string | `""` |  |
 | config.metrics.secureMode.tls.caSecret | string | `""` |  |
 | config.metrics.secureMode.tls.caMountDirectory | string | `"/etc/prometheus/secrets/"` |  |
