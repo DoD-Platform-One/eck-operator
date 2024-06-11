@@ -1,6 +1,6 @@
 # eck-operator
 
-![Version: 2.13.0-bb.0](https://img.shields.io/badge/Version-2.13.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.13.0](https://img.shields.io/badge/AppVersion-2.13.0-informational?style=flat-square)
+![Version: 2.13.0-bb.1](https://img.shields.io/badge/Version-2.13.0--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.13.0](https://img.shields.io/badge/AppVersion-2.13.0-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -96,7 +96,7 @@ helm install eck-operator chart/
 | telemetry.disabled | bool | `false` |  |
 | telemetry.distributionChannel | string | `"helm"` |  |
 | config.logVerbosity | string | `"0"` |  |
-| config.metricsPort | string | `"0"` |  |
+| config.metricsPort | int | `0` |  |
 | config.metrics.port | string | `"4321"` |  |
 | config.metrics.secureMode.enabled | bool | `false` |  |
 | config.metrics.secureMode.volumeMounts | list | `[]` |  |
