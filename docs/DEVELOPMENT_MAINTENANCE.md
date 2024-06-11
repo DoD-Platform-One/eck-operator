@@ -96,12 +96,74 @@ config:
     port: "4321"
 ```
 
-* Added `license` values
-* Added `networkPolicies` values
-* Added `monitoring` values
-* Added `openshift` values
-* Added `istio` values
-* Added `upgradeCrds` values
+* Add `license` values (see below)
+* Add `networkPolicies` values (see below)
+* Add `monitoring` values (see below)
+* Add `openshift` values (see below)
+* Add `istio` values (see below)
+* Add `upgradeCrds` values (see below)
+
+```yaml
+# Enterprise license
+license:
+  trial: false # Toggle to enable the trial license for development use
+  keyJSON: "" # Set this to your license JSON for production use
+
+# BigBang specific Network Policy Configuration
+networkPolicies:
+  enabled: false
+  # See `kubectl cluster-info` and then resolve to IP
+  controlPlaneCidr: 0.0.0.0/0
+  additionalPolicies: []
+
+# Toggle BigBang Monitoring Integration
+monitoring:
+  enabled: false
+
+# Openshift toggle, conditionally modifies networkpolicy for DNS
+openshift: false
+
+# Istio toggle, conditionally allow istio specific policies and components
+istio:
+  enabled: false
+  hardened:
+    enabled: false
+    customAuthorizationPolicies: []
+    outboundTrafficPolicyMode: "REGISTRY_ONLY"
+    customServiceEntries: []
+      # - name: "allow-google"
+      #   enabled: true
+      #   spec:
+      #     hosts:
+      #       - google.com
+      #     location: MESH_EXTERNAL
+      #     ports:
+      #       - number: 443
+      #         protocol: TLS
+      #         name: https
+      #     resolution: DNS
+    # - name: "allow-nothing"
+    #   enabled: true
+    #   spec: {}
+    tempo:
+      enabled: false
+      namespaces:
+      - tempo
+      principals:
+      - cluster.local/ns/tempo/sa/tempo-tempo
+  # Default kiali peer authentication
+  mtls:
+    # STRICT = Allow only mutual TLS traffic
+    # PERMISSIVE = Allow both plain text and mutual TLS traffic
+    mode: STRICT
+
+# Force replace CRD upgrade job needed for 1.7.x upgrade
+upgradeCrds:
+  enabled: false
+  image:
+    repository: registry1.dso.mil/ironbank/big-bang/base
+    tag: 2.1.0
+```
 
 ## chart/templates/bigbang/*
 * Added BigBang Network Policies as applicable
