@@ -5,9 +5,11 @@
 Elastic Cloud on Kubernetes (ECK) operator
 
 ## Upstream References
+
 * <https://github.com/elastic/cloud-on-k8s>
 
 ## Learn More
+
 * [Application Overview](docs/overview.md)
 * [Other Documentation](docs/)
 
@@ -21,12 +23,13 @@ Kubernetes: `>=1.21.0-0`
 
 Install Helm
 
-https://helm.sh/docs/intro/install/
+<https://helm.sh/docs/intro/install/>
 
 ## Deployment
 
 * Clone down the repository
 * cd into directory
+
 ```bash
 helm install eck-operator chart/
 ```
