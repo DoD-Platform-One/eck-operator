@@ -1,15 +1,13 @@
 # eck-operator
 
-![Version: 2.13.0-bb.1](https://img.shields.io/badge/Version-2.13.0--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.13.0](https://img.shields.io/badge/AppVersion-2.13.0-informational?style=flat-square)
+![Version: 2.13.0-bb.2](https://img.shields.io/badge/Version-2.13.0--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.13.0](https://img.shields.io/badge/AppVersion-2.13.0-informational?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
 ## Upstream References
-
 * <https://github.com/elastic/cloud-on-k8s>
 
 ## Learn More
-
 * [Application Overview](docs/overview.md)
 * [Other Documentation](docs/)
 
@@ -23,13 +21,12 @@ Kubernetes: `>=1.21.0-0`
 
 Install Helm
 
-<https://helm.sh/docs/intro/install/>
+https://helm.sh/docs/intro/install/
 
 ## Deployment
 
 * Clone down the repository
 * cd into directory
-
 ```bash
 helm install eck-operator chart/
 ```
