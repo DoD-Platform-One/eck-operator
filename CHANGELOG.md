@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [2.13.0-bb.3] - 2024-08-09
+
+### Changed
+
+- Run pod labels though tpl function in preparation for passing kiali required labels in via umbrella chart
+
 ## [2.13.0-bb.2] - 2024-07-02
 
 ### Removed
