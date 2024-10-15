@@ -1,21 +1,12 @@
 apiVersion: v2
-
 name: eck-operator
-
 icon: https://helm.elastic.co/icons/eck.png
-
 description: Elastic Cloud on Kubernetes (ECK) operator
-
 home: https://github.com/elastic/cloud-on-k8s
-
 type: application
-
 version: 2.14.0-bb.0
-
 appVersion: 2.14.0
-
 kubeVersion: ">=1.21.0-0"
-
 keywords:
   - Logstash
   - Elasticsearch
@@ -25,11 +16,9 @@ keywords:
   - Enterprise Search
   - Elastic Stack
   - Operator
-
 maintainers:
   - name: Elastic
     email: eck@elastic.co
-
 dependencies:
   - name: eck-operator-crds
     version: 2.14.0
@@ -38,6 +27,9 @@ dependencies:
 annotations:
   bigbang.dev/applicationVersions: |
     - ECK Operator: 2.14.0
+  bigbang.dev/upstreamReleaseNotesMarkdown: |
+    - [Find upstream chart's release notes and CHANGELOG here](https://github.com/elastic/cloud-on-k8s/releases)
+    - [Find upstream applications's release notes and CHANGELOG here](https://www.elastic.co/guide/en/cloud-on-k8s/current/eck-release-notes.html)
   helm.sh/images: |
     - name: eck-operator
       image: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator:2.14.0
