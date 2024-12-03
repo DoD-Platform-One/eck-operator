@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [2.15.0-bb.0] - 2024-12-02
+
+### Changed
+
+- eck-operator 2.14.0 -> 2.15.0
+
 ## [2.14.0-bb.1] - 2024-11-22
 
 ### Changed
