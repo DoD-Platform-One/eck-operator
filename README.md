@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # eck-operator
 
-![Version: 2.15.0-bb.0](https://img.shields.io/badge/Version-2.15.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.15.0](https://img.shields.io/badge/AppVersion-2.15.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 2.16.0-bb.0](https://img.shields.io/badge/Version-2.16.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.16.0](https://img.shields.io/badge/AppVersion-2.16.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -49,8 +49,9 @@ helm install eck-operator chart/
 | installCRDs | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| image.tag | string | `"2.15.0"` |  |
+| image.tag | string | `"2.16.0"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.fips | bool | `false` |  |
 | priorityClassName | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | resources.limits.cpu | string | `"200m"` |  |
@@ -107,11 +108,7 @@ helm install eck-operator chart/
 | config.metricsPort | int | `0` |  |
 | config.metrics.port | string | `"4321"` |  |
 | config.metrics.secureMode.enabled | bool | `false` |  |
-| config.metrics.secureMode.volumeMounts | list | `[]` |  |
 | config.metrics.secureMode.tls.certificateSecret | string | `""` |  |
-| config.metrics.secureMode.tls.caSecret | string | `""` |  |
-| config.metrics.secureMode.tls.caMountDirectory | string | `"/etc/prometheus/secrets/"` |  |
-| config.metrics.secureMode.tls.insecureSkipVerify | bool | `true` |  |
 | config.containerRegistry | string | `"docker.elastic.co"` |  |
 | config.maxConcurrentReconciles | string | `"3"` |  |
 | config.caValidity | string | `"8760h"` |  |
@@ -137,7 +134,10 @@ helm install eck-operator chart/
 | podMonitor.scrapeTimeout | string | `"30s"` |  |
 | podMonitor.podTargetLabels | list | `[]` |  |
 | podMonitor.podMetricsEndpointConfig | object | `{}` |  |
-| serviceMonitor | object | `{}` |  |
+| serviceMonitor.enabled | bool | `true` |  |
+| serviceMonitor.caSecret | string | `""` |  |
+| serviceMonitor.caMountDirectory | string | `"/etc/prometheus/secrets/"` |  |
+| serviceMonitor.insecureSkipVerify | bool | `true` |  |
 | global.manifestGen | bool | `false` |  |
 | global.createOperatorNamespace | bool | `true` |  |
 | global.kubeVersion | string | `"1.21.0"` |  |
