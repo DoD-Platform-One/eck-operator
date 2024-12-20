@@ -58,7 +58,7 @@ ECK-Operator is a modified/customized version of an upstream chart. The below de
 ```yaml
 image:
   # repository is the container image prefixed by the registry name.
-  repository: docker.elastic.co/eck/eck-operator
+  repository: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator
 ```
 
 * updated `resources` limits and resources
