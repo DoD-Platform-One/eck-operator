@@ -1,30 +1,20 @@
 {
   "baseBranches": ["main"],
   "configWarningReuseIssue": false,
-  "dependencyDashboard": "true",
+  "dependencyDashboard": true,
   "dependencyDashboardTitle": "Renovate: Upgrade ECK Operator Package Dependencies",
   "draftPR": true,
-  "labels": ["eckoperator","renovate"],
+  "enabledManagers": ["custom.regex", "helm-values", "helmv3"],
+  "labels": ["eckoperator", "renovate", "kind::maintenance", "team::Observability"],
+  "postUpdateOptions": ["helmUpdateSubChartArchives"],
+  "separateMajorMinor": false,
   "packageRules": [
-    {
-      "matchDatasources": ["docker"],
-      "groupName": "Ironbank"
-    },
-    {
-      "matchPackageNames": ["registry1.dso.mil/ironbank/big-bang/base"],
-      "allowedVersions": "!/8.4/"
-    }
+    {"matchDatasources": ["docker", "helm"],"groupName": "Ironbank"}
   ],
-  "separateMajorMinor": "false",
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["^chart/values\\.yaml$"],
-      "matchStrings": [
-        "repository:\\s+(?<depName>.+)\\s+tag:\\s+(?<currentValue>.+)"
-      ],
-      "datasourceTemplate": "docker"
-    },
-    {
+      "customType": "regex",
+      "description": "Update app version chart annotations",
       "fileMatch": ["^chart/Chart\\.yaml$"],
       "matchStrings": [
         "- ECK Operator:\\s+(?<currentValue>.+)",
@@ -34,11 +24,28 @@
       "datasourceTemplate": "docker"
     },
     {
+      "customType": "regex",
+      "description": "Update docker image references",
       "fileMatch": ["^chart/Chart\\.yaml$"],
-      "matchStrings": [
-        "image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"
-      ],
+      "matchStrings": ["image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"],
       "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "description": "Update chart version",
+      "fileMatch": ["^chart/Chart\\.yaml$"],
+      "matchStrings": ["version:\\s+(?<currentValue>.+)-bb\\.\\d+"],
+      "autoReplaceStringTemplate": "version: {{newValue}}-bb.0",
+      "depNameTemplate": "eck-operator",
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "https://helm.elastic.co"
     }
-  ]
+  ],
+  "postUpgradeTasks": {
+    "commands": [
+      "regenerate-helm-docs",
+      "bump-changelog '- {{{replace 'registry1.dso.mil/' '' depName}}} updated from {{{currentVersion}}} to {{{newVersion}}}'"
+    ],
+    "fileFilters": ["chart/Chart.yaml", "README.md", "CHANGELOG.md"]
+  }
 }
