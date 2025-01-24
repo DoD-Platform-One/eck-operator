@@ -1,11 +1,12 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # eck-operator
 
-![Version: 2.16.0-bb.0](https://img.shields.io/badge/Version-2.16.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.16.0](https://img.shields.io/badge/AppVersion-2.16.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 2.16.1-bb.0](https://img.shields.io/badge/Version-2.16.1--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.16.1](https://img.shields.io/badge/AppVersion-2.16.1-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
 ## Upstream References
+
 - <https://github.com/elastic/cloud-on-k8s>
 
 ## Upstream Release Notes
@@ -49,7 +50,7 @@ helm install eck-operator chart/
 | installCRDs | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| image.tag | string | `"2.16.0"` |  |
+| image.tag | string | `"2.16.1"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.fips | bool | `false` |  |
 | priorityClassName | string | `""` |  |
