@@ -237,6 +237,11 @@ addons:
   metricsServer:
     enabled: false
 
+elasticsearchKibana:
+  enabled: true
+  license:
+    trial: true
+
 eckOperator:
   # -- Toggle deployment of ECK Operator.
   enabled: true
@@ -246,6 +251,7 @@ eckOperator:
 ```
 
 - Ensure that all ECK-Operator pods are up and running.
+- Ensure that all elasticsearch-kibana are deploying and running.
 
 > When in doubt with any testing or upgrade steps, reach out to the CODEOWNERS for assistance.
 

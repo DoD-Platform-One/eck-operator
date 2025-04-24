@@ -23,6 +23,13 @@ addons:
 ########################
 # Required for package #
 ########################
+elasticsearchKibana:
+  enabled: true
+  license:
+    trial: true
+  values:
+    bbtests:
+      enabled: true
 eckOperator:
   enabled: true
 kyvernoPolicies:
