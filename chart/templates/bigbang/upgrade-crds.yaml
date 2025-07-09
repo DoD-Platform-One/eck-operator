@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ include "eck-operator.fullname" . }}-crd-upgrade-sa
+  name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade-sa
   namespace: {{ .Release.Namespace }}
   annotations:
     "helm.sh/hook": pre-upgrade
@@ -12,7 +12,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "eck-operator.fullname" . }}-crd-upgrade-role
+  name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade-role
   namespace: {{ .Release.Namespace }}
   annotations:
     "helm.sh/hook": pre-upgrade
@@ -34,7 +34,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "eck-operator.fullname" . }}-crd-upgrade-binding
+  name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade-binding
   namespace: {{ .Release.Namespace }}
   annotations:
     "helm.sh/hook": pre-upgrade
@@ -43,16 +43,16 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ include "eck-operator.fullname" . }}-crd-upgrade-role
+  name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade-role
 subjects:
 - kind: ServiceAccount
-  name: {{ include "eck-operator.fullname" . }}-crd-upgrade-sa
+  name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade-sa
   namespace: {{ .Release.Namespace }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "eck-operator.fullname" . }}-crd-upgrade-cm
+  name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade-cm
   annotations:
     "helm.sh/hook": pre-upgrade
     "helm.sh/hook-weight": "-7"
@@ -64,7 +64,7 @@ data:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "eck-operator.fullname" . }}-crd-upgrade
+  name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade
   namespace: {{ .Release.Namespace }}
   annotations:
     "helm.sh/hook": pre-upgrade
@@ -73,13 +73,13 @@ spec:
   backoffLimit: 3
   template:
     metadata:
-      name: {{ include "eck-operator.fullname" . }}-crd-upgrade
+      name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade
       labels:
-        app.kubernetes.io/name: {{ include "eck-operator.fullname" . }}-crd-upgrade
+        app.kubernetes.io/name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade
     spec:
-      serviceAccountName: {{ include "eck-operator.fullname" . }}-crd-upgrade-sa
+      serviceAccountName: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade-sa
       containers:
-        - name: bb-{{ include "eck-operator.fullname" . }}-upgrade
+        - name: bb-{{ include "eck-operator.fullname" .Subcharts.upstream }}-upgrade
           image: {{ .Values.upgradeCrds.image.repository }}:{{ .Values.upgradeCrds.image.tag }}
           workingDir: /crds
           command:
@@ -127,7 +127,7 @@ spec:
       volumes:
         - name: crds
           configMap:
-            name: {{ include "eck-operator.fullname" . }}-crd-upgrade-cm
+            name: {{ include "eck-operator.fullname" .Subcharts.upstream }}-crd-upgrade-cm
         - name: workdir
           emptyDir: {}
 {{- end }}
