@@ -4,7 +4,7 @@ icon: https://helm.elastic.co/icons/eck.png
 description: Elastic Cloud on Kubernetes (ECK) operator
 home: https://github.com/elastic/cloud-on-k8s
 type: application
-version: 3.0.0-bb.0
+version: 3.0.0-bb.1
 appVersion: 3.0.0
 kubeVersion: ">=1.21.0-0"
 keywords:
@@ -16,14 +16,11 @@ keywords:
   - Enterprise Search
   - Elastic Stack
   - Operator
-maintainers:
-  - name: Elastic
-    email: eck@elastic.co
 dependencies:
-  - name: eck-operator-crds
+  - name: eck-operator
     version: 3.0.0
-    condition: installCRDs
-    repository: "file://charts/eck-operator-crds"
+    repository: https://helm.elastic.co
+    alias: upstream
 annotations:
   bigbang.dev/maintenanceTrack: bb_integrated
   bigbang.dev/applicationVersions: |

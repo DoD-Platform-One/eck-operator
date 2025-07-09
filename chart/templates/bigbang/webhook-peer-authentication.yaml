@@ -9,7 +9,7 @@ spec:
     mode: {{ .Values.istio.mtls.mode }}
   selector:
     matchLabels:
-      {{- include "eck-operator.selectorLabels" . | nindent 6 }}
+      {{- include "eck-operator.selectorLabels" .Subcharts.upstream  | nindent 6 }}
   portLevelMtls:
     # The validating webhook communication is on port 9443
     # This port is excluded from the sidecar traffic, so we need to add an mTLS "exception"

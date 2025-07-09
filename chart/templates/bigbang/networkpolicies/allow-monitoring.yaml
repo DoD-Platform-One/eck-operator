@@ -16,7 +16,7 @@ spec:
         matchLabels:
           app: prometheus
     ports:
-    - port: 4321
+    - port: {{ .Values.upstream.config.metrics.port }}
   podSelector:
     matchLabels:
       app.kubernetes.io/name: elastic-operator
