@@ -119,7 +119,7 @@ spec:
               mountPath: /src
             - name: workdir
               mountPath: /crds
-      {{- with .Values.imagePullSecrets }}
+      {{- with .Values.upstream.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}

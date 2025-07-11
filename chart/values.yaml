@@ -88,6 +88,9 @@ upgradeCrds:
 
 # Ref https://github.com/elastic/cloud-on-k8s/blob/main/deploy/eck-operator/values.yaml
 upstream:
+  imagePullSecrets:
+  - name: private-registry
+
   image:
     repository: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator
     tag: 3.0.0
