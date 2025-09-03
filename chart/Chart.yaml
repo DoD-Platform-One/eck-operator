@@ -4,8 +4,8 @@ icon: https://helm.elastic.co/icons/eck.png
 description: Elastic Cloud on Kubernetes (ECK) operator
 home: https://github.com/elastic/cloud-on-k8s
 type: application
-version: 3.0.0-bb.2
-appVersion: 3.0.0
+version: 3.1.0-bb.0
+appVersion: 3.1.0
 kubeVersion: ">=1.21.0-0"
 keywords:
   - Logstash
@@ -18,16 +18,16 @@ keywords:
   - Operator
 dependencies:
   - name: eck-operator
-    version: 3.0.0
+    version: 3.1.0
     repository: https://helm.elastic.co
     alias: upstream
 annotations:
   bigbang.dev/maintenanceTrack: bb_integrated
   bigbang.dev/applicationVersions: |
-    - ECK Operator: 3.0.0
+    - ECK Operator: 3.1.0
   bigbang.dev/upstreamReleaseNotesMarkdown: |
     - [Find upstream chart's release notes and CHANGELOG here](https://github.com/elastic/cloud-on-k8s/releases)
     - [Find upstream application's release notes and CHANGELOG here](https://www.elastic.co/guide/en/cloud-on-k8s/current/eck-release-notes.html)
   helm.sh/images: |
     - name: eck-operator
-      image: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator:3.0.0
+      image: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator:3.1.0
