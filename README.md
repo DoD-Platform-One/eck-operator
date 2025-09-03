@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # eck-operator
 
-![Version: 3.0.0-bb.2](https://img.shields.io/badge/Version-3.0.0--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.0.0](https://img.shields.io/badge/AppVersion-3.0.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 3.1.0-bb.0](https://img.shields.io/badge/Version-3.1.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.1.0](https://img.shields.io/badge/AppVersion-3.1.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -73,7 +73,7 @@ helm install eck-operator chart/
 | upgradeCrds.image.tag | string | `"2.1.0"` |  |
 | upstream.imagePullSecrets[0].name | string | `"private-registry"` |  |
 | upstream.image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| upstream.image.tag | string | `"3.0.0"` |  |
+| upstream.image.tag | string | `"3.1.0"` |  |
 | upstream.image.pullPolicy | string | `"IfNotPresent"` |  |
 | upstream.image.fips | bool | `false` |  |
 | upstream.resources.limits.cpu | string | `"200m"` |  |
