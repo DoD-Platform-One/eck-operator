@@ -1,48 +1,61 @@
-# Istio toggle, conditionally allow istio specific policies and components
+# bb-common istio configuration
 istio:
   enabled: false
-  hardened:
-    enabled: false
-    customAuthorizationPolicies: []
-    outboundTrafficPolicyMode: "REGISTRY_ONLY"
-    customServiceEntries: []
-      # - name: "allow-google"
-      #   enabled: true
-      #   spec:
-      #     hosts:
-      #       - google.com
-      #     location: MESH_EXTERNAL
-      #     ports:
-      #       - number: 443
-      #         protocol: TLS
-      #         name: https
-      #     resolution: DNS
-    # - name: "allow-nothing"
-    #   enabled: true
-    #   spec: {}
-    tempo:
-      enabled: false
-      namespaces:
-      - tempo
-      principals:
-      - cluster.local/ns/tempo/sa/tempo-tempo
-  # Default kiali peer authentication
+  injection: "enabled"
+
+  # Mutual TLS configuration
   mtls:
-    # STRICT = Allow only mutual TLS traffic
-    # PERMISSIVE = Allow both plain text and mutual TLS traffic
-    mode: STRICT
+    mode: STRICT  # STRICT, PERMISSIVE, or DISABLE
+
+  # Sidecar configuration for outbound traffic control
+  sidecar:
+    enabled: false
+    outboundTrafficPolicyMode: REGISTRY_ONLY  # REGISTRY_ONLY or ALLOW_ANY
+
+  # Custom AuthorizationPolicies
+  authorizationPolicies:
+    enabled: false
+    generateFromNetpol: true
 
 # BigBang specific Network Policy Configuration
 networkPolicies:
   enabled: false
-  # See `kubectl cluster-info` and then resolve to IP
-  controlPlaneCidr: 0.0.0.0/0
-  vpcCidr: 0.0.0.0/0
+  egress:
+    definitions:
+      elasticsearch:
+        to:
+          - namespaceSelector: {}
+            podSelector:
+              matchLabels:
+                common.k8s.elastic.co/type: elasticsearch
+            ports:
+              - port: 9200
+                protocol: TCP
+      kibana:
+        to:
+          - namespaceSelector: {}
+            podSelector:
+              matchLabels:
+                common.k8s.elastic.co/type: kibana
+            ports:
+              - port: 5601
+                protocol: TCP
+    from:
+      elastic-operator:
+        to:
+          definition:
+            kubeAPI: true
+            elasticsearch: true
+            kibana: true
+          k8s:
+            tempo/tempo:9411: true
+  ingress:
+    to:
+      elastic-operator:8080:
+        from:
+          k8s:
+            monitoring/prometheus: true
   additionalPolicies: []
-
-# Toggle BigBang Monitoring Integration
-monitoring:
-  enabled: false
 
 # BigBang Service Monitor
 serviceMonitor:
