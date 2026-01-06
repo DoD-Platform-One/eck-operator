@@ -2,5 +2,8 @@ dependencies:
 - name: eck-operator
   repository: https://helm.elastic.co
   version: 3.2.0
-digest: sha256:eef6d3daa64c2f6b888ef0a3ef67869a51627799f56043cee85dac1dcad82b03
-generated: "2025-11-01T06:16:21.971539145Z"
+- name: bb-common
+  repository: oci://registry1.dso.mil/bigbang
+  version: 0.11.2
+digest: sha256:0902205a039759575f0881895fcaa1a66a5161c67055ac9da1a13bd93012ddb4
+generated: "2025-12-16T10:32:26.215528496-06:00"

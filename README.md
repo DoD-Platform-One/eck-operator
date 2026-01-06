@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # eck-operator
 
-![Version: 3.2.0-bb.0](https://img.shields.io/badge/Version-3.2.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 3.2.0-bb.1](https://img.shields.io/badge/Version-3.2.0--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -44,18 +44,27 @@ helm install eck-operator chart/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| istio.enabled | bool | `false` |  |
-| istio.hardened.enabled | bool | `false` |  |
-| istio.hardened.customAuthorizationPolicies | list | `[]` |  |
-| istio.hardened.outboundTrafficPolicyMode | string | `"REGISTRY_ONLY"` |  |
-| istio.hardened.customServiceEntries | list | `[]` |  |
-| istio.hardened.tempo.enabled | bool | `false` |  |
-| istio.hardened.tempo.namespaces[0] | string | `"tempo"` |  |
-| istio.hardened.tempo.principals[0] | string | `"cluster.local/ns/tempo/sa/tempo-tempo"` |  |
+| istio.enabled | bool | `true` |  |
+| istio.injection | string | `"enabled"` |  |
 | istio.mtls.mode | string | `"STRICT"` |  |
+| istio.sidecar.enabled | bool | `true` |  |
+| istio.sidecar.outboundTrafficPolicyMode | string | `"REGISTRY_ONLY"` |  |
+| istio.authorizationPolicies.enabled | bool | `true` |  |
+| istio.authorizationPolicies.generateFromNetpol | bool | `true` |  |
 | networkPolicies.enabled | bool | `false` |  |
-| networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
-| networkPolicies.vpcCidr | string | `"0.0.0.0/0"` |  |
+| networkPolicies.egress.definitions.elasticsearch.to[0].namespaceSelector | object | `{}` |  |
+| networkPolicies.egress.definitions.elasticsearch.to[0].podSelector.matchLabels."common.k8s.elastic.co/type" | string | `"elasticsearch"` |  |
+| networkPolicies.egress.definitions.elasticsearch.to[0].ports[0].port | int | `9200` |  |
+| networkPolicies.egress.definitions.elasticsearch.to[0].ports[0].protocol | string | `"TCP"` |  |
+| networkPolicies.egress.definitions.kibana.to[0].namespaceSelector | object | `{}` |  |
+| networkPolicies.egress.definitions.kibana.to[0].podSelector.matchLabels."common.k8s.elastic.co/type" | string | `"kibana"` |  |
+| networkPolicies.egress.definitions.kibana.to[0].ports[0].port | int | `5601` |  |
+| networkPolicies.egress.definitions.kibana.to[0].ports[0].protocol | string | `"TCP"` |  |
+| networkPolicies.egress.from.elastic-operator.to.definition.kubeAPI | bool | `true` |  |
+| networkPolicies.egress.from.elastic-operator.to.definition.elasticsearch | bool | `true` |  |
+| networkPolicies.egress.from.elastic-operator.to.definition.kibana | bool | `true` |  |
+| networkPolicies.egress.from.elastic-operator.to.k8s.tempo/tempo:9411 | bool | `true` |  |
+| networkPolicies.ingress.to.elastic-operator:8080.from.k8s.monitoring/prometheus | bool | `true` |  |
 | networkPolicies.additionalPolicies | list | `[]` |  |
 | monitoring.enabled | bool | `false` |  |
 | serviceMonitor.enabled | bool | `false` |  |
