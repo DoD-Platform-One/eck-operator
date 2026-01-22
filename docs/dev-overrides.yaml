@@ -1,0 +1,30 @@
+istiod:
+  enabled: true
+  values:
+    hardened:
+      enabled: true
+istioCRDs:
+  enabled: true
+istioGateway:
+  enabled: true
+
+networkPolicies:
+  enabled: true
+
+neuvector:
+  enabled: false
+
+monitoring:
+  enabled: true
+
+elasticsearchKibana:
+  enabled: true
+  license:
+    trial: true
+
+eckOperator:
+  # -- Toggle deployment of ECK Operator.
+  enabled: true
+  git:
+    tag: null
+    branch: renovate/ironbank

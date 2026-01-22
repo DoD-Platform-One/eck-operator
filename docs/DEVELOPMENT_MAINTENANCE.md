@@ -62,45 +62,10 @@ ECK-Operator is a modified/customized version of an upstream chart. The below de
 
 The following overrides can be used for a bare minimum ECK-Operator deployment:
 
-```yaml
-istiod:
-  enabled: true
-  values:
-    hardened:
-      enabled: true
-istioCRDs:
-  enabled: true
-istioGateway:
-  enabled: true
-
-networkPolicies:
-  enabled: true
-
-neuvector:
-  enabled: false
-
-monitoring:
-  enabled: true
-
-elasticsearchKibana:
-  enabled: true
-  license:
-    trial: true
-
-eckOperator:
-  # -- Toggle deployment of ECK Operator.
-  enabled: true
-  git:
-    tag: null
-    branch: renovate/ironbank
-```
+Refer to [docs/dev-overrides.yaml](https://repo1.dso.mil/big-bang/product/packages/eck-operator/-/blob/main/docs/dev-overrides.yaml) for YAML values to deploy against Big Bang.
 
 - Ensure that all ECK-Operator pods are up and running.
-- Ensure that all elasticsearch-kibana are deploying and running.
+- Ensure that all elasticsearch-kibana pods are deployed and running.
 - Login to [Prometheus](https://prometheus.dev.bigbang.mil/), validate under `Status` -> `Targets` that all eck-operator targets are showing as up
 
-> When in doubt with any testing or upgrade steps, reach out to the CODEOWNERS for assistance.
-
-
-
-
+> When in doubt with any testing or upgrade steps, reach out to the [CODEOWNERS](https://repo1.dso.mil/big-bang/product/packages/eck-operator/-/blob/main/CODEOWNERS) for assistance.
