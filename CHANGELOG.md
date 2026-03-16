@@ -3,6 +3,13 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.3.1-bb.0] (2026-03-05)
+### Changed
+- eck-operator updated from 3.2.0 to 3.3.1
+- bb-common 0.11.2 -> 0.14.1
+- eck-operator 3.2.0 -> 3.3.1
+- registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator 3.2.0 -> 3.3.1
+
 ## [3.2.0-bb.1] (2025-12-16)
 ### Changed
 - Adopt bb-common for Istio Resource creation

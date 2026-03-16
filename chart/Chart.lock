@@ -1,9 +1,9 @@
 dependencies:
 - name: eck-operator
   repository: https://helm.elastic.co
-  version: 3.2.0
+  version: 3.3.1
 - name: bb-common
   repository: oci://registry1.dso.mil/bigbang
-  version: 0.11.2
-digest: sha256:0902205a039759575f0881895fcaa1a66a5161c67055ac9da1a13bd93012ddb4
-generated: "2025-12-16T10:32:26.215528496-06:00"
+  version: 0.14.1
+digest: sha256:12e0e30a609f2897e1ff9f2486299170687383747e657e262018bba4ec0120b2
+generated: "2026-03-05T19:07:11.578652645Z"

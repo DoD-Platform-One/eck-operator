@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # eck-operator
 
-![Version: 3.2.0-bb.1](https://img.shields.io/badge/Version-3.2.0--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 3.3.1-bb.0](https://img.shields.io/badge/Version-3.3.1--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.3.1](https://img.shields.io/badge/AppVersion-3.3.1-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Elastic Cloud on Kubernetes (ECK) operator
 
@@ -44,12 +44,12 @@ helm install eck-operator chart/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| istio.enabled | bool | `true` |  |
+| istio.enabled | bool | `false` |  |
 | istio.injection | string | `"enabled"` |  |
 | istio.mtls.mode | string | `"STRICT"` |  |
-| istio.sidecar.enabled | bool | `true` |  |
+| istio.sidecar.enabled | bool | `false` |  |
 | istio.sidecar.outboundTrafficPolicyMode | string | `"REGISTRY_ONLY"` |  |
-| istio.authorizationPolicies.enabled | bool | `true` |  |
+| istio.authorizationPolicies.enabled | bool | `false` |  |
 | istio.authorizationPolicies.generateFromNetpol | bool | `true` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.egress.definitions.elasticsearch.to[0].namespaceSelector | object | `{}` |  |
@@ -66,7 +66,6 @@ helm install eck-operator chart/
 | networkPolicies.egress.from.elastic-operator.to.k8s.tempo/tempo:9411 | bool | `true` |  |
 | networkPolicies.ingress.to.elastic-operator:8080.from.k8s.monitoring/prometheus | bool | `true` |  |
 | networkPolicies.additionalPolicies | list | `[]` |  |
-| monitoring.enabled | bool | `false` |  |
 | serviceMonitor.enabled | bool | `false` |  |
 | serviceMonitor.additionalLabels | object | `{}` | Additional labels for the service monitor |
 | serviceMonitor.interval | string | `"30s"` | Scrape interval. If not set, the Prometheus default scrape interval is used. |
@@ -83,7 +82,7 @@ helm install eck-operator chart/
 | upgradeCrds.image.tag | string | `"2.1.0"` |  |
 | upstream.imagePullSecrets[0].name | string | `"private-registry"` |  |
 | upstream.image.repository | string | `"registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator"` |  |
-| upstream.image.tag | string | `"3.2.0"` |  |
+| upstream.image.tag | string | `"3.3.1"` |  |
 | upstream.image.pullPolicy | string | `"IfNotPresent"` |  |
 | upstream.image.fips | bool | `false` |  |
 | upstream.resources.limits.cpu | string | `"200m"` |  |
