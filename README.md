@@ -16,7 +16,7 @@ Elastic Cloud on Kubernetes (ECK) operator
 
 ## Learn More
 
-- [Application Overview](docs/overview.md)
+- [Application Overview](docs/OVERVIEW.md)
 - [Other Documentation](docs/)
 
 ## Pre-Requisites
@@ -107,4 +107,3 @@ Please see the [contributing guide](./CONTRIBUTING.md) if you are interested in 
 ---
 
 _This file is programatically generated using `helm-docs` and some BigBang-specific templates. The `gluon` repository has [instructions for regenerating package READMEs](https://repo1.dso.mil/big-bang/product/packages/gluon/-/blob/master/docs/bb-package-readme.md)._
-

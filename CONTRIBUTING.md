@@ -2,23 +2,25 @@
 
 Thanks for contributing to this repository!
 
-If you are coming from `repo1.dso.mil` and have an account at `login.dso.mil` please keep reading. If you are coming from or looking for the [project on Github](https://github.com/DoD-Platform-One) and wanting to make a Pull Request without a `dso.mil` account please see [External Github Contributions](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/CONTRIBUTING.md?ref_type=heads#community-contributions-to-dod-platform-one-via-github).
+If you are coming from `repo1.dso.mil` and have an account at `login.dso.mil`, please keep reading. If you are contributing from [GitHub](https://github.com/DoD-Platform-One) without a `dso.mil` account, see the Big Bang guidance for [External Github Contributions](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/CONTRIBUTING.md?ref_type=heads#community-contributions-to-dod-platform-one-via-github).
 
-This repository follows the following conventions:
+This repository follows these conventions:
 
 * [Semantic Versioning](https://semver.org/)
 * [Keep a Changelog](https://keepachangelog.com/)
 * [Conventional Commits](https://www.conventionalcommits.org/)
 
-Development requires the Kubernetes CLI tool as well as a local Kubernetes cluster. [k3d](https://k3d.io) is recommended as a lightweight local option for standing up Kubernetes clusters.
+Development requires `kubectl`, `helm`, and access to a Kubernetes cluster. [k3d](https://k3d.io) is a reasonable lightweight option for local work.
 
 To contribute a change:
 
-1. Create a branch on the cloned repository
-2. Make the changes in code.
-3. Write tests using [cypress](https://www.cypress.io) and [Conftest](https://conftest.dev)
-4. Make commits using the [Conventional Commits](https://www.conventionalcommits.org/) format. This helps with automation for changelog. Update `CHANGELOG.md` in the same commit using the [Keep a Changelog](https://keepachangelog.com). Depending on tooling maturity, this step may be automated.
-5. Open a merge request using one of the provided templates. If this merge request is solving a preexisting issue, add the issue reference into the description of the MR.
-6. During this time, ensure that all new commits are rebased into your branch so that it remains up to date with the `main` branch.
-7. Wait for a maintainer of the repository (see CODEOWNERS) to approve.
-8. If you have permissions to merge, you are responsible for merging. Otherwise, a CODEOWNER will merge the commit.
+1. Create a branch from `main`.
+2. Make the required code and documentation changes.
+3. Update or add tests as needed for the change. If you are changing package behavior, validate the chart renders and the package still deploys correctly.
+4. Make commits using the [Conventional Commits](https://www.conventionalcommits.org/) format.
+5. Update [`CHANGELOG.md`](./CHANGELOG.md) using the [Keep a Changelog](https://keepachangelog.com/) format.
+6. If you change generated documentation such as [`README.md`](./README.md), regenerate it instead of editing it by hand.
+7. Review [`docs/DEVELOPMENT_MAINTENANCE.md`](./docs/DEVELOPMENT_MAINTENANCE.md) for package-specific upgrade and testing guidance.
+8. Open a merge request and reference the related issue when applicable.
+9. Resolve pipeline failures and merge conflicts before requesting final review.
+10. Wait for a maintainer listed in [`CODEOWNERS`](./CODEOWNERS) to approve and merge, or merge it yourself if you have permission.

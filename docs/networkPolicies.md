@@ -1,2 +1,5 @@
+`eck-operator`, like many other Big Bang packages, allows you to define additional network controls through Helm values.
 
-eck-operator (like many other BigBang components) allows you to specify additional network controls through values provided to the chart. Please consult [the Big Bang User Guide](https://docs-bigbang.dso.mil/latest/docs/guides/using-bigbang/network-policies/) for information and instruction in this regard.
+This package uses the shared Big Bang `networkPolicies` values documented in the [Big Bang network policies guide](https://docs-bigbang.dso.mil/latest/docs/guides/using-bigbang/network-policies/).
+
+See [`chart/values.yaml`](../chart/values.yaml) for the package defaults and available overrides.
